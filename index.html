@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Parth Upman — Machine Learning Researcher</title>
+<meta name="description" content="Parth Upman — machine learning researcher working on generative models, medical image analysis, and learning under imbalance." />
+<style>
+  :root{
+    --bg:#ffffff;
+    --surface:#f8f9fb;
+    --text:#1f2430;
+    --muted:#5b6472;
+    --faint:#8a93a2;
+    --line:#e7e9ef;
+    --accent:#4f46e5;
+    --accent-soft:#eef0fe;
+    --maxw:820px;
+    --radius:14px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0f1116;
+      --surface:#171a21;
+      --text:#e8eaf0;
+      --muted:#a3adbd;
+      --faint:#79828f;
+      --line:#252a34;
+      --accent:#8b93ff;
+      --accent-soft:#1b1f30;
+    }
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.65;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+
+  /* Nav */
+  nav{
+    position:sticky;top:0;z-index:10;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:saturate(180%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;}
+  nav .brand{font-weight:700;letter-spacing:-0.01em;}
+  nav .links{display:flex;gap:22px;}
+  nav .links a{color:var(--muted);font-size:15px;font-weight:500;}
+  nav .links a:hover{color:var(--accent);text-decoration:none;}
+  @media (max-width:620px){ nav .links{display:none;} }
+
+  /* Hero */
+  header.hero{padding:56px 0 30px;}
+  .hero-grid{display:flex;gap:34px;align-items:center;}
+  @media (max-width:620px){ .hero-grid{flex-direction:column;text-align:center;gap:20px;} }
+  .avatar{
+    flex:0 0 128px;width:128px;height:128px;border-radius:50%;
+    background:linear-gradient(135deg,#4f46e5,#7c8bff 55%,#22d3ee);
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:44px;font-weight:700;letter-spacing:0.02em;
+    box-shadow:0 8px 30px rgba(79,70,229,0.28);
+    overflow:hidden;
+  }
+  .avatar img{width:100%;height:100%;object-fit:cover;}
+  h1{font-size:33px;margin:0 0 4px;letter-spacing:-0.02em;}
+  .role{font-size:18px;color:var(--text);font-weight:600;margin:0 0 2px;}
+  .affil{color:var(--muted);margin:0 0 14px;font-size:15.5px;}
+  .tagline{color:var(--muted);font-size:16px;max-width:52ch;margin:0 0 16px;}
+  @media (max-width:620px){ .tagline{margin-left:auto;margin-right:auto;} }
+
+  .btns{display:flex;flex-wrap:wrap;gap:9px;}
+  @media (max-width:620px){ .btns{justify-content:center;} }
+  .btn{
+    display:inline-flex;align-items:center;gap:7px;
+    padding:7px 14px;border:1px solid var(--line);border-radius:999px;
+    color:var(--text);font-size:14px;font-weight:500;background:var(--surface);
+    transition:all .15s ease;
+  }
+  .btn:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;transform:translateY(-1px);}
+  .btn svg{width:15px;height:15px;fill:currentColor;}
+
+  /* Sections */
+  section{padding:30px 0;border-top:1px solid var(--line);}
+  h2{font-size:14px;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin:0 0 18px;font-weight:700;}
+  p{margin:0 0 14px;}
+  .lead{color:var(--muted);}
+  .lead strong{color:var(--text);}
+
+  /* Interests */
+  .tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:4px;}
+  .tag{background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:6px 13px;font-size:14px;font-weight:500;}
+
+  /* News */
+  .news{list-style:none;padding:0;margin:0;}
+  .news li{display:flex;gap:16px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:15.5px;}
+  .news li:last-child{border-bottom:none;}
+  .news .date{flex:0 0 62px;color:var(--faint);font-variant-numeric:tabular-nums;font-weight:600;}
+  .news .what{color:var(--muted);}
+  .news .what strong{color:var(--text);}
+
+  /* Publications */
+  .pub{display:flex;gap:20px;padding:22px 0;border-bottom:1px solid var(--line);}
+  .pub:last-child{border-bottom:none;}
+  .thumb{
+    flex:0 0 150px;height:104px;border-radius:10px;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    font-size:20px;font-weight:800;letter-spacing:0.04em;color:#fff;padding:8px;
+  }
+  .thumb.care{background:linear-gradient(135deg,#6366f1,#a855f7);}
+  .thumb.ldat{background:linear-gradient(135deg,#0ea5e9,#14b8a6);}
+  .thumb.qc{background:linear-gradient(135deg,#f59e0b,#ef4444);}
+  @media (max-width:620px){ .pub{flex-direction:column;gap:12px;} .thumb{flex-basis:auto;width:100%;height:88px;} }
+  .pub .title{font-size:17.5px;font-weight:650;margin:0 0 4px;line-height:1.35;}
+  .pub .authors{color:var(--muted);font-size:15px;margin:0 0 2px;}
+  .pub .authors b{color:var(--text);}
+  .pub .venue{color:var(--accent);font-size:14px;font-weight:600;margin:0 0 8px;}
+  .pub .desc{color:var(--muted);font-size:15px;margin:0 0 10px;}
+  .pub .plinks{display:flex;flex-wrap:wrap;gap:8px;}
+  .plink{font-size:13px;font-weight:600;padding:4px 11px;border-radius:7px;background:var(--surface);border:1px solid var(--line);color:var(--text);}
+  .plink:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
+  .plink.soon{color:var(--faint);cursor:default;}
+  .plink.soon:hover{border-color:var(--line);color:var(--faint);}
+
+  /* Contact */
+  .contact-row{display:flex;flex-wrap:wrap;gap:10px;}
+  footer{padding:34px 0 48px;color:var(--faint);font-size:13.5px;text-align:center;border-top:1px solid var(--line);}
+  footer a{color:var(--muted);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="brand">Parth Upman</span>
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#news">News</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero" id="top">
+    <div class="hero-grid">
+      <!-- To use a real photo: replace the initials below with <img src="profile.jpg" alt="Parth Upman" /> -->
+      <div class="avatar">PU</div>
+      <div>
+        <h1>Parth Upman</h1>
+        <p class="role">Machine Learning Researcher</p>
+        <p class="affil" style="margin-bottom:4px;">MSc Computer Science with AI, University of Nottingham &nbsp;·&nbsp; B.Tech, BIT Mesra</p>
+        <p class="affil">Advised by <a href="https://sites.google.com/view/shreyankngowda/home" target="_blank" rel="noopener">Dr. Shreyank N. Gowda</a></p>
+        <p class="tagline">I work on making generative models controllable and making learning robust when real-world data is scarce, skewed, and long-tailed.</p>
+        <div class="btns">
+          <a class="btn" href="https://scholar.google.com/citations?user=D3VJq6oAAAAJ&hl=en" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.84 3.77A8 8 0 0 1 12 9a8 8 0 0 1 7.16 4.27L24 9.5z"/></svg>
+            Google Scholar
+          </a>
+          <a class="btn" href="https://www.linkedin.com/in/parthupman" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05C20.3 8.65 21 10.9 21 14v7h-4v-6.2c0-1.48-.03-3.38-2.06-3.38-2.06 0-2.38 1.6-2.38 3.27V21H9z"/></svg>
+            LinkedIn
+          </a>
+          <a class="btn" href="mailto:parthupman@gmail.com">
+            <svg viewBox="0 0 24 24"><path d="M12 12.7 0 5.3V4a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v1.3zM0 7.6V20a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2V7.6l-12 7.4z"/></svg>
+            Email
+          </a>
+          <a class="btn" href="https://github.com/parthupman" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2 0-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.1 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></svg>
+            GitHub
+          </a>
+          <a class="btn plink-cv" href="#" onclick="return false;" title="Add your CV PDF and link it here">
+            <svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm8 1.5V8h4.5z"/></svg>
+            CV
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About</h2>
+    <p class="lead">I'm a machine learning researcher working at the intersection of <strong>generative modeling</strong>, <strong>medical image analysis</strong>, and <strong>learning under distribution imbalance</strong>. My research favors <strong>trustworthy and efficient</strong> methods — often training-free — that make large models safer to steer and make learning reliable when data is long-tailed and scarce.</p>
+    <p class="lead">I'm currently an <strong>MSc student in Computer Science with Artificial Intelligence at the University of Nottingham</strong>, advised by <strong><a href="https://sites.google.com/view/shreyankngowda/home" target="_blank" rel="noopener">Dr. Shreyank N. Gowda</a></strong>, following a <strong>B.Tech in Computer Science from BIT Mesra</strong>. I came to research from a background as a full-stack engineer, which shapes how I work: reproducible code, clean experimental harnesses, and methods that hold up in practice. I'm working toward <strong>doctoral research</strong> in machine learning and am open to collaborations and PhD opportunities.</p>
+    <div class="tags">
+      <span class="tag">Diffusion &amp; generative models</span>
+      <span class="tag">Concept erasure / model editing</span>
+      <span class="tag">Long-tailed learning</span>
+      <span class="tag">Medical image analysis</span>
+      <span class="tag">Imbalanced classification</span>
+      <span class="tag">Trustworthy &amp; efficient ML</span>
+    </div>
+  </section>
+
+  <section id="research">
+    <h2>Selected Research</h2>
+
+    <div class="pub">
+      <div class="thumb care">CARE</div>
+      <div>
+        <p class="title">Erasing Without Collateral Damage: Precise Concept Removal in Diffusion Models</p>
+        <p class="venue">Preprint · under review, 2026</p>
+        <p class="desc">A <strong>training-free</strong> concept-erasure framework (CARE) for diffusion models. Rather than removing a concept along a raw direction, which harms semantically related concepts, CARE erases along a <em>retained-subspace-aware</em> direction computed offline from kept-concept anchors, adding only ~0.7% per-image overhead while preserving what should stay. Built on the AdaVD codebase (Wang et al., CVPR 2025).</p>
+        <div class="plinks">
+          <a class="plink" href="https://github.com/parthupman/care" target="_blank" rel="noopener">Code</a>
+          <span class="plink soon">Paper · soon</span>
+          <span class="plink soon">BibTeX · soon</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="thumb ldat">LDAT</div>
+      <div>
+        <p class="title">Learning Dynamics-Aware Training for Long-Tailed Medical Image Classification</p>
+        <p class="venue">Under review, 2026</p>
+        <p class="desc">LDAT is a closed-loop training framework that sets per-class loss weights from <em>observed learning dynamics</em> (velocity, acceleration, relative progress) instead of static class frequencies. It reaches <strong>84.0% accuracy on ISIC2018 in 50 epochs</strong> — matching or beating methods that require 200–1,000 epochs — at negligible overhead.</p>
+        <div class="plinks">
+          <a class="plink" href="https://github.com/parthupman/learning-dynamics-aware-training" target="_blank" rel="noopener">Code</a>
+          <span class="plink soon">Paper · soon</span>
+          <span class="plink soon">BibTeX · soon</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="thumb qc">QC-<br>SMOTE</div>
+      <div>
+        <p class="title">QC-SMOTE: Quality-Controlled Oversampling for Imbalanced Classification</p>
+        <p class="venue">In preparation</p>
+        <p class="desc">A quality-controlled variant of SMOTE that scores each minority seed for <em>trustworthiness</em>, allocates synthesis effort by reliability, and selects the best of <em>K</em> candidates via an interpolation-purity metric. Across <strong>30 KEEL benchmarks</strong> (imbalance ratio up to 32.7) it reaches <strong>0.931 AUC-ROC</strong>, improving over VS-SMOTE.</p>
+        <div class="plinks">
+          <a class="plink" href="https://github.com/parthupman/QcSmote" target="_blank" rel="noopener">Code</a>
+          <span class="plink soon">Paper · soon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="news">
+    <h2>News</h2>
+    <ul class="news">
+      <li><span class="date">2026</span><span class="what"><strong>CARE</strong> — precise, training-free concept erasure for diffusion models — released as a preprint and under review.</span></li>
+      <li><span class="date">2026</span><span class="what"><strong>LDAT</strong> submitted for review: learning-dynamics-aware training for long-tailed medical imaging.</span></li>
+      <li><span class="date">2026</span><span class="what"><strong>QC-SMOTE</strong> in preparation with S. Gowda — quality-controlled oversampling across 30 KEEL benchmarks.</span></li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p class="lead">Open to <strong>research collaborations</strong>, <strong>PhD opportunities</strong>, and conversations about generative models, safety, and learning under imbalance.</p>
+    <div class="contact-row">
+      <a class="btn" href="mailto:parthupman@gmail.com">parthupman@gmail.com</a>
+      <a class="btn" href="https://scholar.google.com/citations?user=D3VJq6oAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+      <a class="btn" href="https://www.linkedin.com/in/parthupman" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/parthupman" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  © 2026 Parth Upman · Built as a single self-contained page · <a href="#top">Back to top ↑</a>
+</footer>
+
+</body>
+</html>
